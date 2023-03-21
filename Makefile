@@ -22,6 +22,9 @@ sh:
 logs:
 	docker logs --tail ${TAIL_LOGS} -f ${DOCKER_CONTAINER}
 
+ruff:
+	ruff check . --fix
+
 build:
 	docker buildx build -f docker/src/Dockerfile --platform linux/amd64 --output type=docker -t ${DOCKER_IMAGE}:${TAG} .
 	docker tag ${DOCKER_IMAGE}:${TAG} ${REGISTRY}:${REGISTRY_PORT}/${DOCKER_IMAGE}:${TAG}
