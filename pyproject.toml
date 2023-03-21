@@ -19,7 +19,9 @@ ruff = "^0.0.257"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.pylint]
-max-line-length = 120
-disable = []
-good-names = []
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".pytest_cache",
+    "venv",
+]
