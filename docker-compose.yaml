@@ -1,0 +1,15 @@
+services:
+  example_service:
+    container_name: ${DOCKER_CONTAINER}
+    hostname: ${DOCKER_CONTAINER}
+    restart: always
+    image: ${REGISTRY}:${REGISTRY_PORT}/${DOCKER_IMAGE}:${TAG}
+    env_file:
+      - .env
+    volumes:
+      - ./:/src
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: 50m
+        max-file: '2'
